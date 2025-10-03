@@ -1,14 +1,16 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 import pytest
 
+class TestHotelPage:
 
-class TestHotelPlanisphere(object):
+    def test_reserve_page_title(self, page: Page):
+        url = "https://hotel.testplanisphere.dev/ja/reserve.html?plan-id=0"
+        page.goto(url)
 
-    @pytest.fixture(scope="function", autouse=True)
-    def page_fixture(self, page: Page):
-        self.page = page
-        yield
-        self.page.close()
+        # ページタイトルを取得
+        title = page.title()
+        print(f"[INFO] ページタイトル取得: {title}")
 
-    def test_change_all_params(self):
-        self.page.goto("https://hotel.testplanisphere.dev/ja/reserve.html?plan-id=0")
+        # アサーション
+        assert title == "Planisphere Hotel", f"タイトルが一致しません: {title}"
+        print("[SUCCESS] タイトルが 'Planisphere Hotel' と一致しました。")
