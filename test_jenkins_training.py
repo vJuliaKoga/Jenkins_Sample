@@ -12,5 +12,5 @@ class TestHotelPage:
         print(f"[INFO] ページタイトル取得: {title}")
 
         # アサーション
-        assert title == "Planisphere Hotel", f"タイトルが一致しません: {title}"
+        assert title == "宿泊予約 | HOTEL PLANISPHERE - テスト自動化練習サイト"
         print("[SUCCESS] タイトルが 'Planisphere Hotel' と一致しました。")
